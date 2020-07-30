@@ -6,6 +6,7 @@
     <!--Import materialize.css-->
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 
 
     <!--Let browser know website is optimized for mobile-->
@@ -13,7 +14,7 @@
     <title>Auto Diet</title>
   </head>
 
-  <body>
+  <body style="background-color: #CDDDFF;">
     <!--Navbar-->
     <div class="navbar-fixed">
       <nav class="green darken-1">
@@ -84,6 +85,108 @@
         </li>
       </ul>
     </section>
+
+    <!--Generar Dieta-->
+    <div class="row">
+      <div class="col s6 offset-s3" id="divdieta">
+        <div class="row">
+          <!--Anything Div-->
+          <div id="checkboxcomida" class="col s2 center-align offset-s1">
+            <img src="https://img.icons8.com/plasticine/50/000000/food-cart.png"/>
+            <form action="#">
+              <p>
+                <label>
+                  <input type="checkbox" checked="checked"/>
+                  <span>Anything</span>
+                </label>
+              </p>
+              <p>
+            </form>
+          </div>
+          <!--Keto-->
+          <div id="checkboxcomida" class="col s2 center-align">
+            <img src="https://img.icons8.com/plasticine/50/000000/no-gluten.png"/>
+            <form action="#">
+              <p>
+                <label>
+                  <input type="checkbox"/>
+                  <span>Keto</span>
+                </label>
+              </p>
+              <p>
+            </form>
+          </div>
+          <!--Vegetarian-->
+          <div id="checkboxcomida" class="col s2 center-align">
+            <img src="https://img.icons8.com/plasticine/50/000000/vegetarian-mark.png"/>
+            <form action="#">
+              <p>
+                <label>
+                  <input type="checkbox"/>
+                  <span>Vegetarian</span>
+                </label>
+              </p>
+              <p>
+            </form>
+          </div>
+          <!--Vegan-->
+          <div id="checkboxcomida" class="col s2 center-align">
+            <img src="https://img.icons8.com/plasticine/50/000000/vegan-symbol.png"/>
+            <form action="#">
+              <p>
+                <label>
+                  <input type="checkbox"/>
+                  <span>Vegan</span>
+                </label>
+              </p>
+              <p>
+            </form>
+          </div>
+          <!--Lactose-->
+          <div id="checkboxcomida" class="col s2 center-align">
+            <img src="https://img.icons8.com/plasticine/50/000000/pack-of-milk.png"/>
+            <form action="#">
+              <p>
+                <label>
+                  <input type="checkbox"/>
+                  <span>Lactose</span>
+                </label>
+              </p>
+              <p>
+            </form>
+          </div>
+        </div>
+        <!--Calories per day-->
+        <div class="row">
+          <div class="col s12 offset-s1">
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Calories you want to eat a day:
+            <div class="input-field inline">
+              <input id="number_inline" type="number">
+              <label for="number_inline">Calories</label>
+            </div>
+          </div>
+        </div>
+        <!--Meals per day-->
+        <div class="row">
+          <div class="col s12 offset-s1">
+            How many meals are you planning to eat a day:
+            <div class="input-field inline">
+              <input id="number_inline" type="number">
+              <label for="number_inline">Meals</label>
+            </div>
+          </div>
+        </div>
+        <!--Boton Submit-->
+        <div class="row">
+          <div class="col s12 offset-s5">
+            <a class="green darken-1 waves-effect waves-light btn-large">Create Diet</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--TENEMOS QUE AGREGAR ESE LINK EN EL FOOTER POR LOS ICONOS-->
+    <!--<a href="https://icons8.com">Icons</a>-->
 
     <!--JavaScript at end of body for optimized loading-->
     <!-- Compiled and minified JavaScript -->
