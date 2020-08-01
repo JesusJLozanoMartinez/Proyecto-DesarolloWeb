@@ -19,5 +19,10 @@
   .input-field input[type=text]:focus + label {
     color: #43a047;
   }
+.card{
+  width: 400px;
+  border-radius: 20px;
+  left: 40%;
+}
 
   
