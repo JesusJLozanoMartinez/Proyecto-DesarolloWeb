@@ -20,19 +20,4 @@
     color: #43a047;
   }
 
-/*Device = Tablets, Ipads (portrait)
-  Screen = B/w 600px to 990px*/
-  @media (min-width:600px) and (max-width: 990px)  {
-
-
-}
-
-/*  Small devices    */
-@media (max-width:599px) {
-
-
-
-
-}
-
   
