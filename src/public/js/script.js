@@ -114,6 +114,7 @@ async function sendApiReq(cont){
 function useData(data){
     arr = data.hits;
     rand = arr[Math.floor(Math.random() * arr.length)];
+    $.post( "/diets", { label: rand.recipe.label, image: rand.recipe.image, link: rand.recipe.shareAs });
     $(".dietContainer").append(`<div class="card">
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" src="${rand.recipe.image}" style="width:200px;height:121px; alt="Recipe picture">
