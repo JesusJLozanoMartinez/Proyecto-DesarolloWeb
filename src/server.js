@@ -23,6 +23,7 @@ mongoose.connect('mongodb://localhost/final-proyect')
         .catch(err => console.log(err))
 
 // App middlewares
+app.set('port', process.env.PORT || 3000);
 app.set('view-engine', 'ejs')
 app.set('views', path.join(__dirname,'views'))
 app.use(express.static(__dirname + '/public'))
@@ -55,6 +56,6 @@ app.post('/diets', (req, res) => {
 })
 
 // Start server
-app.listen(3000, () => {
-    console.log('Server listening on port 3000...')
-})
+app.listen(app.get('port'), () =>{
+    console.log('server running on port' + app.get('port'));
+});
