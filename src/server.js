@@ -43,6 +43,12 @@ app.use('/login', loginRoutes)
 app.get('/', auth.authenticated, (req, res) => {
     res.render('index.ejs', {title: 'Auto Diet'})
 })
+app.get('/help', auth.authenticated, (req, res) => {
+    res.render('gethelp.ejs', {title: 'Auto Diet'})
+})
+app.get('/pastdiets', auth.authenticated, (req, res) => {
+    res.render('diet.ejs', {title: 'Auto Diet'})
+})
 
 app.post('/diets', (req, res) => {
     console.log(req.body)

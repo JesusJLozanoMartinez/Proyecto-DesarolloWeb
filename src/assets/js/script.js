@@ -83,19 +83,19 @@ async function sendApiReq(cont){
     let APP_ID = "ee7a873b";
     let API_KEY = "e7ac86435ec6c45bc54e7e5513ddf7ee";
     if(healthlabels != ""){
-        var resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&${healthlabels}`);
+        var resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&${healthlabels}&calories=100-300`);
         let datar = await resp.json();
         if(datar.hits.length == 0){
             let q = qarr[Math.floor(Math.random() * qarr.length)];
         }
-        resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&${healthlabels}`);
+        resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&${healthlabels}&calories=100-300`);
     }else{
-        var resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}`);
+        var resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&calories=100-300`);
         let datar = await resp.json();
         if(datar.hits.length == 0){
             let q = qarr[Math.floor(Math.random() * qarr.length)];
         }
-        resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}`);
+        resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&calories=100-300`);
     }
     console.log(resp);
     let data = await resp.json();
@@ -114,7 +114,6 @@ async function sendApiReq(cont){
 function useData(data){
     arr = data.hits;
     rand = arr[Math.floor(Math.random() * arr.length)];
-    $.post( "/diets", { label: rand.recipe.label, image: rand.recipe.image, link: rand.recipe.shareAs });
     $(".dietContainer").append(`<div class="card">
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" src="${rand.recipe.image}" style="width:200px;height:121px; alt="Recipe picture">
