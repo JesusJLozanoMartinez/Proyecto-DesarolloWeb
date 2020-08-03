@@ -79,23 +79,34 @@ async function sendApiReq(cont){
             qarr = ["protein", "fruit", "salad", "vegtables", "soy"];
         }
     }
+    var cal = $("#number_inline").val();
+    cal = cal / 3;
+    var calmin = cal - 100;
+    console.log(cal);
+    console.log(calmin);
+    if (cal == 0){
+        cal = 700;
+        calmin = 500;
+    }
+    console.log(cal);
+    console.log(calmin);
     let q = qarr[Math.floor(Math.random() * qarr.length)];
     let APP_ID = "ee7a873b";
     let API_KEY = "e7ac86435ec6c45bc54e7e5513ddf7ee";
     if(healthlabels != ""){
-        var resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&${healthlabels}`);
+        var resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&${healthlabels}&calories=${calmin}-${cal}`);
         let datar = await resp.json();
         if(datar.hits.length == 0){
             let q = qarr[Math.floor(Math.random() * qarr.length)];
         }
-        resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&${healthlabels}`);
+        resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&${healthlabels}&calories=${calmin}-${cal}`);
     }else{
-        var resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}`);
+        var resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&calories=${calmin}-${cal}`);
         let datar = await resp.json();
         if(datar.hits.length == 0){
             let q = qarr[Math.floor(Math.random() * qarr.length)];
         }
-        resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}`);
+        resp = await fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${q}&calories=${calmin}-${cal}`);
     }
     console.log(resp);
     let data = await resp.json();
@@ -115,6 +126,11 @@ function useData(data){
     arr = data.hits;
     rand = arr[Math.floor(Math.random() * arr.length)];
     $.post( "/pastdiets", { label: rand.recipe.label, image: rand.recipe.image, link: rand.recipe.shareAs });
+    var text = '<ul>';
+    for(var i = 0; i < rand.recipe.ingredientLines.length; i++){
+      text += '<li>' + rand.recipe.ingredientLines[i] + '</li>';
+    }
+    text+= '</ul>';
     $(".dietContainer").append(`<div class="card">
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" src="${rand.recipe.image}" style="width:200px;height:121px; alt="Recipe picture">
@@ -125,7 +141,7 @@ function useData(data){
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">${rand.recipe.label}<i class="material-icons right">close</i></span>
-      <p>Calories: ${rand.recipe.calories}</p>
+      <div>${text}</div>
     </div>
   </div>`);
 }

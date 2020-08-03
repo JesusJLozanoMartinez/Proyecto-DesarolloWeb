@@ -2,3 +2,46 @@
   <link rel="stylesheet" href="css/style.css">  
   <body style="background-color: #CDDDFF;">
     <%- include ("./partials/_navbar.ejs") %>
+    <table class="striped highlight" >
+      <thead>
+        <tr>
+            <th>Breakfast</th>
+            <th>Lunch</th>
+            <th>Dinner</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><div>
+            <img src="images/fruit-2367029_1920.jpg" alt="fruit" style="width: 200px; border-radius: 25px;">
+          </div></td>
+          <td><div>
+            <img src="images/fruit-2367029_1920.jpg" alt="fruit" style="width: 200px;">
+          </div></td>
+          <td><div>
+            <img src="images/fruit-2367029_1920.jpg" alt="fruit" style="width: 200px;">
+          </div></td>
+        </tr>
+        <tr>
+          <td>Alan</td>
+          <td>Jellybean</td>
+          <td>$3.76</td>
+        </tr>
+        <tr>
+          <td>Jonathan</td>
+          <td>Lollipop</td>
+          <td>$7.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+      //Sidenav
+      const sideNav = document.querySelector('.sidenav');
+      M.Sidenav.init(sideNav, {});
+    </script>
+</body>
+</html>

@@ -20,11 +20,12 @@ const app = express()
 
 // DB Connection
 mongoose.set('useFindAndModify', false)
-mongoose.connect('mongodb://localhost/final-proyect')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/final-proyect')
         .then(db => console.log('db connected'))
         .catch(err => console.log(err))
 
 // App middlewares
+app.set('port', process.env.PORT || 3000);
 app.set('view-engine', 'ejs')
 app.set('views', path.join(__dirname,'views'))
 app.use(express.static(__dirname + '/public'))
@@ -75,6 +76,6 @@ app.post('/pastdiets', auth.authenticated, async (req, res) => {
 })
 
 // Start server
-app.listen(3000, () => {
-    console.log('Server listening on port 3000...')
-})
+app.listen(app.get('port'), () =>{
+    console.log('server running on port' + app.get('port'));
+});
