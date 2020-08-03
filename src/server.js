@@ -7,24 +7,22 @@ const session = require('express-session')
 const User = require('./models/user')
 const auth = require('./middleware/auth')
 
+// Passport init
 const initializePassport = require('./middleware/passport-config')
 initializePassport(passport,
     async email => await User.findOne({email: email}),
-    async (id) => {
-        // TODO: verifica que sí llegue el user
-        console.log(id)
-        const user = await User.findOne({id: id})
-        console.log(user)
-        return user 
-    }
+    async (id) => await User.findOne({id: id})
 )
 
+// App init
 const app = express()
 
+// DB Connection
 mongoose.connect('mongodb://localhost/final-proyect')
         .then(db => console.log('db connected'))
         .catch(err => console.log(err))
 
+// App middlewares
 app.set('view-engine', 'ejs')
 app.set('views', path.join(__dirname,'views'))
 app.use(express.urlencoded({extended: false}))
@@ -37,12 +35,15 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+// Load routes
 const loginRoutes = require('./routes/login')
-const { init } = require('./models/user')
+app.use('/login', loginRoutes)
 
 app.get('/', auth.authenticated, (req, res) => {
     res.render('index.ejs', {title: 'Auto Diet'})
 })
 
-app.use('/login', loginRoutes)
-app.listen(3000);
+// Start server
+app.listen(3000, () => {
+    console.log('Server listening on port 3000...')
+})
