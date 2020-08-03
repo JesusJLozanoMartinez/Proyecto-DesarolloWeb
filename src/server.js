@@ -18,7 +18,7 @@ initializePassport(passport,
 const app = express()
 
 // DB Connection
-mongoose.connect('mongodb://localhost/final-proyect')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/final-proyect')
         .then(db => console.log('db connected'))
         .catch(err => console.log(err))
 
