@@ -31,9 +31,8 @@ router.post('/register', async (req, res) => {
 
     try {
         const hashPassword = await bcrypt.hash(password, 10)
-        const user = new User({ name, email, password: hashPassword })
+        const user = new User({ name, email, password: hashPassword, diets: []})
         await user.save()
-        console.log("here")
         passport.authenticate('local')(req, res, () => {
             res.redirect('/')
         })
