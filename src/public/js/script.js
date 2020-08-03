@@ -125,7 +125,7 @@ async function sendApiReq(cont){
 function useData(data){
     arr = data.hits;
     rand = arr[Math.floor(Math.random() * arr.length)];
-    $.post( "/diets", { label: rand.recipe.label, image: rand.recipe.image, link: rand.recipe.shareAs });
+    $.post( "/pastdiets", { label: rand.recipe.label, image: rand.recipe.image, link: rand.recipe.shareAs });
     var text = '<ul>';
     for(var i = 0; i < rand.recipe.ingredientLines.length; i++){
       text += '<li>' + rand.recipe.ingredientLines[i] + '</li>';

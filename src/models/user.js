@@ -12,7 +12,8 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    diets: [{link: String, title: String, image: String}]
 })
 
 const User = mongoose.model('user', userSchema)
