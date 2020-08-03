@@ -22,6 +22,7 @@ router.get('/register', auth.notAuthenticted, (req, res) => {
 })
 
 router.post('/register', async (req, res) => {
+    console.log('register post')
     const { name, email, password } = req.body
     const foundUser = await User.findOne({ email: email })
     if (foundUser) { 
