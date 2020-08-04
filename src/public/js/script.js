@@ -81,7 +81,7 @@ async function sendApiReq(cont){
     }
     var cal = $("#number_inline").val();
     cal = cal / 3;
-    var calmin = cal - 100;
+    var calmin = cal - (cal*.5);
     console.log(cal);
     console.log(calmin);
     if (cal == 0){
