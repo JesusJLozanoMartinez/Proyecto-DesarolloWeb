@@ -2,39 +2,28 @@
   <link rel="stylesheet" href="css/style.css">  
   <body style="background-color: #CDDDFF;">
     <%- include ("./partials/_navbar.ejs") %>
-    <table class="striped highlight" >
+    <% var cont = 0 %>
+    <table class="striped highlight centered" >
+      <% for (var i =0; i < diets.length; i++)  {     %>
+        <% if (i%3 == 0){ %>
+          <% cont += 1%>
       <thead>
         <tr>
-            <th>Breakfast</th>
-            <th>Lunch</th>
-            <th>Dinner</th>
+            <th>Diet #<%= cont %></th>
         </tr>
       </thead>
+      <%  }  %>
 
       <tbody>
         <tr>
           <td><div>
-            <p>Titulo de la comida</p>
-            <img src="images/fruit-2367029_1920.jpg" alt="fruit" style="width: 200px; border-radius: 25px;">
-            <p><a target="_blank" rel="noopener noreferrer" href="#" target="_blank">Link to the recipe</a></p>
-          </div></td>
-          <td><div>
-            <img src="images/fruit-2367029_1920.jpg" alt="fruit" style="width: 200px;">
-          </div></td>
-          <td><div>
-            <img src="images/fruit-2367029_1920.jpg" alt="fruit" style="width: 200px;">
+            <p><strong> <%= diets[i].title %> </strong> </p>
+            <img src="<%= diets[i].image %>" alt="paltillo" style="width: 200px; border-radius: 25px;">
+            <p><a target="_blank" rel="noopener noreferrer" href="<%= diets[i].link %>" target="_blank">Link to the recipe</a></p>
           </div></td>
         </tr>
-        <tr>
-          <td>Alan</td>
-          <td>Jellybean</td>
-          <td>$3.76</td>
-        </tr>
-        <tr>
-          <td>Jonathan</td>
-          <td>Lollipop</td>
-          <td>$7.00</td>
-        </tr>
+        <%  i = i + 1  %>
+        <%  }  %>
       </tbody>
     </table>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
